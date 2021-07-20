@@ -1,9 +1,6 @@
 # how to run
 #  python khop_main.py "/home/thesun/hdoop/code/" 3 "/input/graph_cora.txt" "/output"
 # python khop_main.py "path to code"
-
-
-
 import os
 import sys
 from pydoop.hdfs import hdfs
@@ -32,15 +29,12 @@ if not khop.isdigit():
 if not (os.path.exists(pathToInputData) or fs.exists(pathToInputData)):
 	print("No input file or directory:", pathToInputData)
 	sys.exit()
-
-
 if not fs.exists(pathToKHop):
     fs.create_directory(pathToKHop)
 
 f = fs.open_file(pathToKHop + "/khop_number.txt", 'wt')
 f.write(str(khop))
 f.close()
-
 os.system("pydoop submit --upload-file-to-cache " + pathToKhopMapRed + " " + "khop_mapred.py.py".split(".")[0] + " " + pathToInputData + " " + pathToOutputData)
 os.system("python " + pathToKhopMapRedCombine)
 print("Info: All khops will be stored on HDFS under the folder /khop")
