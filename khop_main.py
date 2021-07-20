@@ -3,27 +3,19 @@
 # python khop_main.py "path to code"
 
 
+
 import os
 import sys
 from pydoop.hdfs import hdfs
 fs = hdfs("localhost", 9000) 
-pathToCode = str(sys.argv[1])
-khop = sys.argv[2]
-pathToInputData = str(sys.argv[3])
-pathToOutputData = str(sys.argv[4])
+khop = sys.argv[1]
+pathToInputData = str(sys.argv[2])
+pathToOutputData = str(sys.argv[3])
 # path to khop folder where output will be shown
 pathToKHop = "/khop"
-if pathToCode == "." or pathToCode == "/":
-	pathToCode = ""
-pathToKhopMapRed = pathToCode + "khop_mapred.py"
-pathToKhopMapRedCombine = pathToCode + "khop_mapred_combine.py"
 
-if pathToCode != "":
-	if not ((os.path.exists(pathToCode) or fs.exists(pathToCode))):
-		print("Directory not found:", pathToCode)
-		sys.exit()
-
-
+pathToKhopMapRed = "khop_mapred.py"
+pathToKhopMapRedCombine = "khop_mapred_combine.py"
 
 if not (os.path.exists(pathToKhopMapRed) or fs.exists(pathToKhopMapRed)):
 	print("khop_mapred.py file not found:", pathToKhopMapRed)
@@ -52,4 +44,3 @@ f.close()
 os.system("pydoop submit --upload-file-to-cache " + pathToKhopMapRed + " " + "khop_mapred.py.py".split(".")[0] + " " + pathToInputData + " " + pathToOutputData)
 os.system("python " + pathToKhopMapRedCombine)
 print("Info: All khops will be stored on HDFS under the folder /khop")
-
