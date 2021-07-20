@@ -10,7 +10,6 @@ pathToInputData = str(sys.argv[2])
 pathToOutputData = str(sys.argv[3])
 # path to khop folder where output will be shown
 pathToKHop = "/khop"
-
 pathToKhopMapRed = "khop_mapred.py"
 pathToKhopMapRedCombine = "khop_mapred_combine.py"
 
@@ -37,4 +36,4 @@ f.write(str(khop))
 f.close()
 os.system("pydoop submit --upload-file-to-cache " + pathToKhopMapRed + " " + "khop_mapred.py.py".split(".")[0] + " " + pathToInputData + " " + pathToOutputData)
 os.system("python " + pathToKhopMapRedCombine)
-print("Info: All khops will be stored on HDFS under the folder /khop")
+print("Info: All khops will be stored on HDFS under the folder /khop.")
