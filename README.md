@@ -23,3 +23,11 @@ After running the code successfully, all the generated khops will be stored in "
 NodeID_KHop.txt
 
 Provided for academic use only
+
+## Contact
+
+Irfan Ullah - [@sahibzada-irfanullah](https://www.linkedin.com/in/sahibzada-irfanullah/) - LinkedIn
+
+Irfan Ullah - [@sahibzada_irfan](https://twitter.com/sahibzada_irfan) - Twitter
+
+<p align="right">(<a href="#top">back to top</a>)</p>
